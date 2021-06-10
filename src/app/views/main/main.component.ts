@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Kanban } from 'src/app/models/kanban.model';
 import { KanbanService } from 'src/app/services/kanban.service';
 
@@ -28,14 +28,14 @@ export class MainComponent implements OnInit {
   }
 
   // criando nova tarefa
-  newTodo(){
+  newTodo() {
     this.createMode = true;
     this.editMode = false;
     this.selectedTodo = new Kanban();
   }
 
-  // alternatando modo de edicao/criacao
-  changeMode(mode: string){
+  // alternando modo de edicao/criacao
+  changeMode(mode: string) {
     switch (mode) {
       case 'edit':
         this.editMode = !this.editMode;
@@ -48,13 +48,13 @@ export class MainComponent implements OnInit {
   }
 
   // resetando selectedsTodos
-  resetSelectedTodo(){
+  resetSelectedTodo() {
     this.selectedTodo.name = null
     this.selectedTodo.Kanban = null
   }
 
   // listagem
-  list(){
+  list() {
     this.kanbanService.list().subscribe(Kanbans => {
       this.Kanbans = Kanbans;
       this.todo = Kanbans.filter(i => i.Kanban === 'To Do');
@@ -63,15 +63,15 @@ export class MainComponent implements OnInit {
     });
   }
 
-  // seleciona Kanban
-  selected(Kanban: Kanban){
+  // seleciona Kanban 
+  selected(Kanban: Kanban) {
     this.editMode = true;
     this.createMode = false;
     this.selectedTodo = Kanban;
   }
 
   // remove Kanban
-  remove(id: string){
+  remove(id: string) {
     this.kanbanService.delete(id).subscribe(() => {
       this.list();
       alert('Removido com sucesso');
@@ -79,12 +79,12 @@ export class MainComponent implements OnInit {
   }
 
   //Funcao para salvar as alterções e fazer as validaçoes dos campos
-  save(){
-      if(this.createMode){
-      if(this.selectedTodo.name == null || this.selectedTodo.Kanban == null){
+  save() {
+    if (this.createMode) {
+      if (this.selectedTodo.name == null || this.selectedTodo.Kanban == null) {
         alert('Favor preencher todos os campos!');
       } else {
-        
+
         this.kanbanService.add(this.selectedTodo).subscribe(() => {
           this.list();
           this.createMode = false;

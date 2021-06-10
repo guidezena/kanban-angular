@@ -65,28 +65,32 @@
         <div class="column">
           <div class="column-title">To Do</div>
 
-          <div class="task-content" cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo"
+          <div class="task-content" style="height: 10px; padding: 20px;" cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo"
             (cdkDropListDropped)="drop($event)">
-
-            <!--NgFor percorre todos os elementos do array todo e exibi no campo da DIV 
+            <!--NgFor percorre todos os elementos do array todo e exibe no campo da DIV 
               para voce escolher qual elemento voce ira manipular -->
-
             <div class="task" *ngFor="let item of todo" (dblclick)="selected(item)" cdkDrag>
               {{ item.name }}
+              <span (click)="selected(item)" style="margin-inline-start: auto; margin-right: 10px;">
+                <i class="fa fa-pencil"></i>
+              </span>
               <span (click)="remove(item._id)">
                 <i class="fa fa-times"></i>
               </span>
+              
             </div>
           </div>
         </div>
         <div class="column">
           <div class="column-title">Doing</div>
-
-          <div class="task-content" cdkDropList #todoList="cdkDropList" [cdkDropListData]="doing"
+          <div class="task-content" style="height: 5px; padding: 20px;" cdkDropList #todoList="cdkDropList" [cdkDropListData]="doing"
             (cdkDropListDropped)="drop($event)">
-            <!--NgFor percorre todos os elementos do array doing e exibi no campo da DIV -->
+            <!--NgFor percorre todos os elementos do array doing e exibe no campo da DIV -->
             <div class="task" *ngFor="let item of doing" (dblclick)="selected(item)" cdkDrag>
               {{ item.name }}
+              <span (click)="selected(item)" style="margin-inline-start: auto; margin-right: 10px;">
+                <i class="fa fa-pencil"></i>
+              </span>
               <span (click)="remove(item._id)">
                 <i class="fa fa-times"></i>
               </span>
@@ -95,13 +99,14 @@
         </div>
         <div class="column">
           <div class="column-title">Done</div>
-          <div class="task-content" cdkDropList #todoList="cdkDropList" [cdkDropListData]="done"
+          <div class="task-content" style="height: 5px; padding: 20px;" cdkDropList #todoList="cdkDropList" [cdkDropListData]="done"
             (cdkDropListDropped)="drop($event)">
-
-            <!--NgFor percorre todos os elementos do array done e exibi no campo da DIV -->
-
+            <!--NgFor percorre todos os elementos do array done e exibe no campo da DIV -->
             <div class="task" *ngFor="let item of done" (dblclick)="selected(item)" cdkDrag>
               {{ item.name }}
+              <span (click)="selected(item)" style="margin-inline-start: auto; margin-right: 10px;">
+                <i class="fa fa-pencil"></i>
+              </span>
               <span (click)="remove(item._id)">
                 <i class="fa fa-times"></i>
               </span>
