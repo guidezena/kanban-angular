@@ -68,7 +68,8 @@
           <div class="task-content" cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo"
             (cdkDropListDropped)="drop($event)">
 
-            <!--NgFor percorre todos os elementos do array todo e exibi no campo da DIV -->
+            <!--NgFor percorre todos os elementos do array todo e exibi no campo da DIV 
+              para voce escolher qual elemento voce ira manipular -->
 
             <div class="task" *ngFor="let item of todo" (dblclick)="selected(item)" cdkDrag>
               {{ item.name }}

@@ -55,7 +55,7 @@ export class MainComponent implements OnInit {
 
   // listagem
   list(){
-    this.kanbanService.listTodo().subscribe(Kanbans => {
+    this.kanbanService.list().subscribe(Kanbans => {
       this.Kanbans = Kanbans;
       this.todo = Kanbans.filter(i => i.Kanban === 'To Do');
       this.doing = Kanbans.filter(i => i.Kanban === 'Doing');
@@ -72,21 +72,20 @@ export class MainComponent implements OnInit {
 
   // remove Kanban
   remove(id: string){
-    this.kanbanService.deleteTodo(id).subscribe(() => {
+    this.kanbanService.delete(id).subscribe(() => {
       this.list();
       alert('Removido com sucesso');
     });
   }
 
-  //Funcao para salvar as alterções
+  //Funcao para salvar as alterções e fazer as validaçoes dos campos
   save(){
-  
-    if(this.createMode){
+      if(this.createMode){
       if(this.selectedTodo.name == null || this.selectedTodo.Kanban == null){
         alert('Favor preencher todos os campos!');
       } else {
         
-        this.kanbanService.addTodo(this.selectedTodo).subscribe(() => {
+        this.kanbanService.add(this.selectedTodo).subscribe(() => {
           this.list();
           this.createMode = false;
           alert('Tarefa adicionada!');
@@ -94,7 +93,7 @@ export class MainComponent implements OnInit {
         })
       }
     } else {
-      this.kanbanService.updateTodo(this.selectedTodo).subscribe(() => {
+      this.kanbanService.update(this.selectedTodo).subscribe(() => {
         this.list();
         this.editMode = false;
         alert('Tarefa atualizada!');
