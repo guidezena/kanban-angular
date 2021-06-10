@@ -1,0 +1,17 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.app-name {
+  font-size: 28px;
+  font-weight: bold;
+  color: #F5DD05;
+  padding: 25px 15px;
+}
+.navbar{
+  background-color: #962D76;
+  text-align: center;
+}
+
